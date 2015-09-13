@@ -6,7 +6,7 @@ action to complete before proceed to the next.
 
 ## Prototype ##
 ```js
-asyncLoop(array, [from, [to]], callback, endCallback);
+asyncLoop(array, [from, [to]], callback, [endCallback]);
 ```
 
 **array:** array
@@ -15,11 +15,11 @@ The array to loop
 
 **from (optionnal):** integer
 
-The starting position (Default: 0).
+The starting position, including (Default: 0).
 
 **to (optionnal):** integer
 
-The final position (Default: array.length - 1).
+The final position, including (Default: array.length - 1).
 
 **callback:** function(item, next)
 
@@ -29,7 +29,7 @@ At the end `endCallback` will be called!
 
 On error it must call `next(errorObject)` and iteration will be stopped and the endCallback called with errorObject.
 
-**endCallback:** function(err)
+**endCallback (optionnal):** function(err)
 
 This function is called at the end.
 
@@ -93,4 +93,55 @@ asyncLoop(directories, function (directory, next)
 
     console.log('Finished!');
 });
+```
+
+## Loop Partially and in reverse order! ##
+```js
+var asyncLoop = require('node-async-loop');
+
+var displayItem = function(item, next) {
+    console.log(item);
+    next();
+}
+
+var array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+// Loop all
+asyncLoop(array, displayItem); // A, B, C, D, E, F
+asyncLoop(array, 0, displayItem); // A, B, C, D, E, F
+asyncLoop(array, 0, array.length - 1, displayItem); // A, B, C, D, E, F
+
+// Loop partially to the end
+asyncLoop(array, 1, displayItem); // B, C, D, E, F
+asyncLoop(array, 2, displayItem); // C, D, E, F
+
+// Loop partially
+asyncLoop(array, 1, 3, displayItem); // B, C, D
+asyncLoop(array, 0, 1, displayItem); // A, B
+asyncLoop(array, 0, 2, displayItem); // A, B, C
+
+// Loop partially in reverse order
+asyncLoop(array, 3, 1, displayItem); // D, C, B
+asyncLoop(array, 1, 0, displayItem); // B, B
+asyncLoop(array, 2, 0, displayItem); // C, B, A
+
+// Loop partially, using negative from/to values
+// -1 is the last element (F)
+// -2 is the before last element (E)
+// -3 ... (D)
+// ...
+asyncLoop(array, 0, -2, displayItem); // A, B, C, D, E
+asyncLoop(array, 1, -2, displayItem); // B, C, D, E
+
+// So to loop in reverse order you can do
+asyncLoop(array, array.length - 1, 0, displayItem); // F, E, D, C, B, A
+// or simply
+asyncLoop(array, -1, 0, displayItem); // F, E, D, C, B, A
+// or simply simply
+asyncLoop(array, -1, displayItem); // F, E, D, C, B, A
+
+// Other examples
+asyncLoop(array, -2, displayItem); // E, D, C, B, A
+asyncLoop(array, -2, -4, displayItem); // E, D, C
+asyncLoop(array, -4, -2, displayItem); // C, D, E
 ```
