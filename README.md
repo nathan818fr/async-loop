@@ -4,6 +4,11 @@ Loop through an array to execute asynchronous actions on each element.
 Sometimes you must execute an asynchronous action on each elements of an array, but you must wait for the previous
 action to complete before proceed to the next.
 
+## Install ##
+```
+npm install --save node-async-loop
+```
+
 ## Prototype ##
 ```js
 asyncLoop(array, [from, [to]], callback, [endCallback]);
@@ -35,7 +40,9 @@ This function is called at the end.
 
 The `err` variable is null if everything was fine, otherwise it contains the error.
 
-## Basic Usage ##
+## Usage ##
+
+### Basic Usage ###
 General usage:
 ```js
 var asyncLoop = require('node-async-loop');
@@ -95,7 +102,7 @@ asyncLoop(directories, function (directory, next)
 });
 ```
 
-## Loop Partially and in reverse order! ##
+### Loop Partially and in reverse order! ###
 ```js
 var asyncLoop = require('node-async-loop');
 
