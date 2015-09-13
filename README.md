@@ -1,4 +1,4 @@
-# async-loop
+# node-async-loop
 Loop through an array to execute asynchronous actions on each element.
 
 Sometimes you must execute an asynchronous action on each elements of an array, but you must wait for the previous
@@ -38,7 +38,7 @@ The `err` variable is null if everything was fine, otherwise it contains the err
 ## Basic Usage ##
 General usage:
 ```js
-var asyncLoop = require('../async-loop.js');
+var asyncLoop = require('node-async-loop');
 
 var array = ['item0', 'item1', 'item2'];
 asyncLoop(array, function (item, next)
@@ -68,7 +68,7 @@ asyncLoop(array, function (item, next)
 For example, create folder recursively:
 ```js
 var fs = require('fs');
-var asyncLoop = require('../async-loop.js');
+var asyncLoop = require('node-async-loop');
 
 var directories = ['test', 'test/hello', 'test/hello/world'];
 asyncLoop(directories, function (directory, next)
