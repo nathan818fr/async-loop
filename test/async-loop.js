@@ -145,4 +145,70 @@ describe("async-loop", function ()
         });
     });
 
+    it("should loop without endCallback", function (done)
+    {
+        var i = 0;
+        var array = ['aa', 'bb', 'cc', 'dd', 'ee'];
+        var arrayCopy = [];
+        asyncLoop(array, function (item, next)
+        {
+            arrayCopy.push(item);
+            i++;
+            if (i >= 5)
+            {
+                expect(i).to.equal(5);
+                expect(arrayCopy).to.deep.equal(['aa', 'bb', 'cc', 'dd', 'ee']);
+                setTimeout(function ()
+                {
+                    done();
+                }, 1);
+            }
+            next();
+        });
+    });
+
+    it("should loop without endCallback (from)", function (done)
+    {
+        var i = 0;
+        var array = ['aa', 'bb', 'cc', 'dd', 'ee'];
+        var arrayCopy = [];
+        asyncLoop(array, 2, function (item, next)
+        {
+            arrayCopy.push(item);
+            i++;
+            if (i >= 3)
+            {
+                expect(i).to.equal(3);
+                expect(arrayCopy).to.deep.equal(['cc', 'dd', 'ee']);
+                setTimeout(function ()
+                {
+                    done();
+                }, 1);
+            }
+            next();
+        });
+    });
+
+    it("should loop without endCallback (from, to)", function (done)
+    {
+        var i = 0;
+        var array = ['aa', 'bb', 'cc', 'dd', 'ee'];
+        var arrayCopy = [];
+        asyncLoop(array, 1, 3, function (item, next)
+        {
+            arrayCopy.push(item);
+            i++;
+            if (i >= 3)
+            {
+                expect(i).to.equal(3);
+                expect(arrayCopy).to.deep.equal(['bb', 'cc', 'dd']);
+                setTimeout(function ()
+                {
+                    done();
+                }, 1);
+            }
+            next();
+        });
+    });
+
 });
