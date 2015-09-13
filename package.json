@@ -1,0 +1,26 @@
+{
+  "name": "async-loop",
+  "version": "1.0.0",
+  "description": "Loop through an array to execute asynchronous actions on each element.",
+  "main": "async-loop.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathan818fr/async-loop.git"
+  },
+  "keywords": [
+    "arrays",
+    "loop"
+  ],
+  "author": "Nathan Poirier <nathan@poirier.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan818fr/async-loop/issues"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
+  }
+}
