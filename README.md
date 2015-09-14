@@ -168,6 +168,8 @@ var obj = {
 asyncLoop(obj, function (item, next)
 {
     console.log(item);
+    // Get object key with: item.key
+    // Get associated value with: item.value
     next();
 }, function ()
 {
