@@ -26,10 +26,10 @@ var asyncLoop = function (array)
         to = array.length + to;
     var step = (from > to) ? -1 : 1;
 
-    loopRec(array, callback, endCallback, from, to, step, object);
+    doAsyncLoop(array, object, callback, endCallback, from, to, step);
 };
 
-var loopRec = function (array, callback, endCallback, currentIndex, to, step, object)
+var doAsyncLoop = function (array, object, callback, endCallback, currentIndex, to, step)
 {
     if (step > 0)
     {
@@ -70,7 +70,7 @@ var loopRec = function (array, callback, endCallback, currentIndex, to, step, ob
             return;
         }
 
-        loopRec(array, callback, endCallback, currentIndex + step, to, step, object);
+        doAsyncLoop(array, object, callback, endCallback, currentIndex + step, to, step);
     });
 };
 

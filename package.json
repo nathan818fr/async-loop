@@ -1,6 +1,6 @@
 {
     "name": "node-async-loop",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Loop through an array to execute asynchronous actions on each element.",
     "main": "async-loop.js",
     "scripts": {
