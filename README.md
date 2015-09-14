@@ -16,8 +16,10 @@ Features:
 npm install --save node-async-loop
 ```
 
-## Prototype ##
+## Function ##
 ```js
+var asyncLoop = require('node-async-loop');
+
 asyncLoop(array[, from[, to]], callback[, endCallback]);
 ```
 
