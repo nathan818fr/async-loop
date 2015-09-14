@@ -4,29 +4,38 @@ Loop through an array to execute asynchronous actions on each element.
 Sometimes you must execute an asynchronous action on each elements of an array, but you must wait for the previous
 action to complete before proceed to the next.
 
+Features:
+* Loop through arrays
+* Loop through objects
+* Loop in the normal direction or in the reverse direction
+* Error handling
+* A callback is called for the end of the loop
+
 ## Install ##
 ```
 npm install --save node-async-loop
 ```
 
-## Prototype ##
+## Function ##
 ```js
-asyncLoop(array, [from, [to]], callback, [endCallback]);
+var asyncLoop = require('node-async-loop');
+
+asyncLoop(array[, from[, to]], callback[, endCallback]);
 ```
 
-**array:** array
+**array:** *array*
 
 The array to loop
 
-**from (optionnal):** integer
+**from (optionnal):** *integer*
 
 The starting position, including (Default: 0).
 
-**to (optionnal):** integer
+**to (optionnal):** *integer*
 
 The final position, including (Default: array.length - 1).
 
-**callback:** function(item, next)
+**callback:** *function(item, next)*
 
 The function called for every elements.
 It must call `next()` so that the next array element is executed.
@@ -34,7 +43,7 @@ At the end `endCallback` will be called!
 
 On error it must call `next(errorObject)` and iteration will be stopped and the endCallback called with errorObject.
 
-**endCallback (optionnal):** function(err)
+**endCallback (optionnal):** *function(err)*
 
 This function is called at the end.
 
