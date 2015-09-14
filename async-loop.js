@@ -1,5 +1,12 @@
 var asyncLoop = function (array)
 {
+    var object;
+    if (!Array.isArray(array))
+    {
+        object = array;
+        array = Object.keys(array);
+    }
+
     var callbackPos = 1;
     while (callbackPos < 3)
     {
@@ -19,10 +26,10 @@ var asyncLoop = function (array)
         to = array.length + to;
     var step = (from > to) ? -1 : 1;
 
-    loopRec(array, callback, endCallback, from, to, step);
+    loopRec(array, callback, endCallback, from, to, step, object);
 };
 
-var loopRec = function (array, callback, endCallback, currentIndex, to, step)
+var loopRec = function (array, callback, endCallback, currentIndex, to, step, object)
 {
     if (step > 0)
     {
@@ -43,7 +50,18 @@ var loopRec = function (array, callback, endCallback, currentIndex, to, step)
         }
     }
 
-    callback(array[currentIndex], function (err)
+    var item;
+    if (object)
+    {
+        item = {
+            key: array[currentIndex],
+            value: object[array[currentIndex]]
+        };
+    }
+    else
+        item = array[currentIndex];
+
+    callback(item, function (err)
     {
         if (err)
         {
@@ -52,7 +70,7 @@ var loopRec = function (array, callback, endCallback, currentIndex, to, step)
             return;
         }
 
-        loopRec(array, callback, endCallback, currentIndex + step, to, step);
+        loopRec(array, callback, endCallback, currentIndex + step, to, step, object);
     });
 };
 
