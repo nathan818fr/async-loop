@@ -1,4 +1,7 @@
 # node-async-loop
+
+[![Build Status](https://travis-ci.org/nathan818fr/async-loop.svg)](https://travis-ci.org/nathan818fr/async-loop)
+
 Loop through an array to execute asynchronous actions on each element.
 
 Sometimes you must execute an asynchronous action on each elements of an array, but you must wait for the previous
