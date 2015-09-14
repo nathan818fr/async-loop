@@ -23,19 +23,19 @@ var asyncLoop = require('node-async-loop');
 asyncLoop(array[, from[, to]], callback[, endCallback]);
 ```
 
-**array:** array
+**array:** *array*
 
 The array to loop
 
-**from (optionnal):** integer
+**from (optionnal):** *integer*
 
 The starting position, including (Default: 0).
 
-**to (optionnal):** integer
+**to (optionnal):** *integer*
 
 The final position, including (Default: array.length - 1).
 
-**callback:** function(item, next)
+**callback:** *function(item, next)*
 
 The function called for every elements.
 It must call `next()` so that the next array element is executed.
@@ -43,7 +43,7 @@ At the end `endCallback` will be called!
 
 On error it must call `next(errorObject)` and iteration will be stopped and the endCallback called with errorObject.
 
-**endCallback (optionnal):** function(err)
+**endCallback (optionnal):** *function(err)*
 
 This function is called at the end.
 
