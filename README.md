@@ -4,6 +4,13 @@ Loop through an array to execute asynchronous actions on each element.
 Sometimes you must execute an asynchronous action on each elements of an array, but you must wait for the previous
 action to complete before proceed to the next.
 
+Features:
+* Loop through arrays
+* Loop through objects
+* Loop in the normal direction or in the reverse direction
+* Error handling
+* A callback is called for the end of the loop
+
 ## Install ##
 ```
 npm install --save node-async-loop
@@ -11,7 +18,7 @@ npm install --save node-async-loop
 
 ## Prototype ##
 ```js
-asyncLoop(array, [from, [to]], callback, [endCallback]);
+asyncLoop(array[, from[, to]], callback[, endCallback]);
 ```
 
 **array:** array
