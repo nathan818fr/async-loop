@@ -152,3 +152,34 @@ asyncLoop(array, -2, displayItem); // E, D, C, B, A
 asyncLoop(array, -2, -4, displayItem); // E, D, C
 asyncLoop(array, -4, -2, displayItem); // C, D, E
 ```
+
+### Loop through objects ###
+```js
+var asyncLoop = require('node-async-loop');
+
+var obj = {
+    'aa': 'AAAA',
+    'bb': 'BBBB',
+    'cc': 'CCCC',
+    'dd': 'DDDD',
+    'ee': 'EEEE'
+};
+
+asyncLoop(obj, function (item, next)
+{
+    console.log(item);
+    next();
+}, function ()
+{
+    console.log('Finished!');
+});
+
+// Output:
+//
+// { key: 'aa', value: 'AAAA' }
+// { key: 'bb', value: 'BBBB' }
+// { key: 'cc', value: 'CCCC' }
+// { key: 'dd', value: 'DDDD' }
+// { key: 'ee', value: 'EEEE' }
+// Finished!
+```
