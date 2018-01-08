@@ -1,3 +1,7 @@
+> ** /!\ This project is no longer maintained. ** <br>
+> ** Some bugs have been highlighted: #3 ** <br>
+> ** If you use node 8, prefer async/await instead.**
+
 # node-async-loop
 
 [![Build Status](https://travis-ci.org/nathan818fr/async-loop.svg)](https://travis-ci.org/nathan818fr/async-loop)
