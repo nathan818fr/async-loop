@@ -1,6 +1,6 @@
-> ** /!\ This project is no longer maintained. ** <br>
-> ** Some bugs have been highlighted: #3 ** <br>
-> ** If you use node 8, prefer async/await instead.**
+> **/!\ This project is no longer maintained.** <br>
+> **Some bugs have been highlighted: [https://github.com/nathan818fr/async-loop/issues/3]** <br>
+> **If you use node 8, prefer async/await instead.**
 
 # node-async-loop
 
